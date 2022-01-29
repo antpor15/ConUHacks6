@@ -1,0 +1,8 @@
+.container {
+    background-color: wheat;
+    align-self: center;
+    padding: 1%;
+    border-radius: 3%;
+    margin-left: 25%;
+    width: 50%;
+}
