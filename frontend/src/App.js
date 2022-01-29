@@ -4,9 +4,10 @@ import { Navbar } from "./components/Navbar"
 
 function App() {
 
+  const [navbarOpen, setNavbarOpen] = useState(true); // change to false
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar navbarOpen={navbarOpen} />
       <Router />
     </>
   );

@@ -1,0 +1,9 @@
+#navbar {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    width: 20%;
+    position: absolute;
+    height: 100%;
+    flex: 1;
+}
