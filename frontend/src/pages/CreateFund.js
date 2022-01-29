@@ -45,9 +45,8 @@ export function CreateFund() {
           required
           label="Keywords"
           placeholder='Input keywords that represent your campaign'
-          searchable
           {...form.getInputProps('Keywords')}
-        />
+          />
   
         <Button type="submit">Submit</Button>
       </form>

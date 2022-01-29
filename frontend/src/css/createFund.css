@@ -1,5 +1,7 @@
 .container {
-    background-color: wheat;
+    background-color: rgb(235, 186, 96);
+    opacity: 95%;
+    margin-top: 0;
     align-self: center;
     padding: 1%;
     border-radius: 3%;
