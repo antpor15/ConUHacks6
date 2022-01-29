@@ -7,7 +7,7 @@
     background-color: black;
     width: 18%;
     position: absolute;
-    height: 100%;
+    height: 98%;
     flex: 1;
     opacity: 0.8;
 }
@@ -30,7 +30,9 @@
 }
 
 #bottom-of-nav {
+    display:flex;
     margin-top: auto;
+    justify-content: center;
 
 }
 

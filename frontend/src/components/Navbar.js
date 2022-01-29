@@ -17,7 +17,7 @@ export const Navbar = () => {
         </div>
 
         <div id="bottom-of-nav">
-            <button className="icons">
+            <button className="icons" id="github-icon">
                 <AiFillGithub size={28}></AiFillGithub>
             </button>
         </div>
