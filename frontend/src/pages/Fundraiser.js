@@ -16,6 +16,8 @@ const Fundraiser = (props) => {
       setprogress(p > 100 ? 100 : p);
     }, [props.campaigns]);
 
+    let fundraiserData = ["option 1", "option 2"];
+
     return props.campaigns.length && (
         <Flex>
             <Container>
