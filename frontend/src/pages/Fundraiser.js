@@ -2,10 +2,38 @@ import React from 'react'
 import {useParams} from "react-router";
 import '../css/fundraiser.css'
 import styled from 'styled-components'
-import {Progress} from "@mantine/core";
+import {MultiSelect, Progress, Select} from "@mantine/core";
 
 const Fundraiser = (fundraiser) => {
     const route = useParams()
+    // const voteGallery = [
+    //   {
+    //     "candidate" : "Joe Shmoe"  
+    //   },
+    //   {
+    //     "candidate" : "Joe Bloe"  
+    //   },
+    //   {
+    //     "candidate" : "Mister Man"  
+    //   },
+    //   {
+    //     "candidate" : "Man Mister"  
+    //   },
+    //   {
+    //     "candidate" : "Mr Bobody"  
+    //   },
+    // ]
+
+    const fundraiserData = [
+      {
+        "campaignTitle" : "",
+        "campaignDeadline" : "",
+        "description" : "",
+        "goalAchieve" : "",
+        "keywords" : "",
+        "voteOptions" : ["candidate1", "candidate2", "candidate3"],
+      },
+    ]
 
     return (
         <Flex>
@@ -34,7 +62,16 @@ const Fundraiser = (fundraiser) => {
                     <Title>
                         Milestones
                     </Title>
-
+                    <Text>
+                      Choose a candidate
+                    </Text>
+                    <div
+                     id='voteGallery'> 
+                      <Select
+                      label="Your favorite framework/library"
+                      placeholder="Pick one"
+                      data={fundraiserData}/>
+                    </div>
                 </Milestones>
             </Container>
         </Flex>

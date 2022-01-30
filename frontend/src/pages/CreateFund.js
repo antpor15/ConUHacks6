@@ -32,8 +32,8 @@ export function CreateFund() {
     }
 
     function splitString (voteOptions) {
-      const optionArray = voteOptions.split(",", 4)
-      console.log(optionArray)
+      const optionArray = voteOptions.split(",")
+      // console.log(optionArray)
     }
     
     return (
