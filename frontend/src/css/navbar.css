@@ -11,12 +11,14 @@
     background-color: #000000;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 1%;
-    padding-bottom: 60px;
+    padding-top: 60px;
+    opacity: 0.8;
 }
-
-.navbar-closed {
-    padding-top: 1%;
+@media screen and (max-width: 600px) {
+    #navbar {
+        width: 100vw;
+        opacity: 0.9;
+    }
 }
 
 #invisible {

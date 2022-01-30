@@ -11,10 +11,10 @@
     background-color: hsla(231, 16%, 34%, 0.5);
     max-width: 800px;
     min-width: 70%;
-    margin-right: 6rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .image {
@@ -22,6 +22,9 @@
     padding: 20px;
 }
 
-.description {
-
+.content {
+    min-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
 }
