@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import React from 'react';
-import {Button, Textarea, TextInput} from '@mantine/core';
-import {useForm} from '@mantine/hooks';
+import { Button, Textarea, TextInput } from '@mantine/core';
+import { useForm } from '@mantine/hooks';
 import styled from 'styled-components'
 
 export function CreateFund() {
@@ -24,8 +24,6 @@ export function CreateFund() {
         console.log(values)
         alert("Please fill in the required areas")
     }
-
-    //always use handlesubmit and parse vote options to have min 2 max 4.
 
     return (
         <Flex>

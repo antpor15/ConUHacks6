@@ -1,12 +1,8 @@
 import { Card, Image, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
 import "../css/fundraiserCard.css"
 
-export const FundraiserCard = ({campaign}) => {
+export const FundraiserCard = ({ campaign }) => {
     const theme = useMantineTheme();
-
-    const secondaryColor = theme.colorScheme === 'dark'
-        ? theme.colors.dark[1]
-        : theme.colors.gray[7];
 
     return (
         <div id="card-div" style={{ opacity: 0.8 }}>
@@ -30,7 +26,7 @@ export const FundraiserCard = ({campaign}) => {
                     </Badge> */}
                 </Group>
 
-                <Text size="sm" style={{ color: "white", lineHeight: 1.5, fontFormat: "Nanum Gothic sans-serif"}}>
+                <Text size="sm" style={{ color: "white", lineHeight: 1.5, fontFormat: "Nanum Gothic sans-serif" }}>
                     {campaign.description}
                 </Text>
 
