@@ -11,7 +11,7 @@ export const FundraiserCard = (props) => {
     return (
         <div id="card-div">
             <Card shadow="sm"
-                className="card-gallery" sx={{
+                sx={{
                     backgroundColor: "black",
                     opacity: 0.9,
                     margin: "5px",

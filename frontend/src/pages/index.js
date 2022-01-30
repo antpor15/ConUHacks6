@@ -7,7 +7,6 @@ import { Home } from './Home'
 const Router = (props) => {
     return (
         <Routes>
-            {/* <Route path="/" exact element={<Home tabChange={props.tabChange} />} /> */}
             <Route path="/" element={<Home />} />
             <Route path="/createFundraiser" element={<CreateFund />} />
             <Route path="/discover" element={<Discover />} />
