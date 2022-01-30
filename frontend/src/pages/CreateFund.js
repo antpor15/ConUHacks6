@@ -1,81 +1,97 @@
 /* eslint-disable no-restricted-globals */
-import React from 'react';
-import { Button, Textarea, TextInput } from '@mantine/core';
+import React, { useState } from 'react';
+import { Button, Textarea, TextInput, Select, MultiSelect } from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 import styled from 'styled-components'
+import '../css/createFund.css';
 
 export function CreateFund() {
-    const form = useForm({
-        initialValues: {
-            campaignTitle: "",
-            campaignDeadline: "",
-            description: "",
-            goalAchieve: "",
-            keywords: "",
-            voteOptions: "",
-        },
+  const form = useForm({
+    initialValues: {
+      campaignTitle: "",
+      campaignDeadline: "",
+      description: "",
+      goalAchieve: "",
+      keywords: "",
+      voteOptions: "",
+    },
 
-        validationRules: {
-            email: (value) => /^\S+@\S+$/.test(value),
-        },
-    });
+    validationRules: {
+      email: (value) => /^\S+@\S+$/.test(value),
+    },
+  });
 
-    const handleSubmit = (values) => {
-        console.log(values)
-        alert("Please fill in the required areas")
+  const [keywords, setKeywords] = useState([]);
+
+  const handleSubmit = (values) => {
+    console.log(values)
+    if (values.campaignTitle === '' || values.description === '' || values.goalAchieve === '' || values.keywords.length === [''] || values.voteOptions === '') {
+      alert("Please fill in the required areas")
+      return;
     }
+    splitString(values.voteOptions)
+  }
 
-    return (
-        <Flex>
-            <Form onSubmit={form.onSubmit((values) => {
-                handleSubmit(values)
-            })}>
-                <TextInput
-                    required
-                    label="Campaign Title"
-                    placeholder="Your Campaign Title"
+  function splitString(voteOptions) {
+    const optionArray = voteOptions.split(",")
+    // console.log(optionArray)
+  }
 
-                    {...form.getInputProps('campaignTitle')}
-                />
-                <TextInput
-                    required
-                    label="Campaign Deadline"
-                    input type="datetime-local"
-                    {...form.getInputProps('campaignDeadline')}
-                />
-                <Textarea
-                    required
-                    label="Description"
-                    placeholder='Describe your campaign'
-                    {...form.getInputProps('description')}
-                />
-                <TextInput
-                    required
-                    label="Goal to Achieve"
-                    placeholder='0.00000000 ETH'
-                    {...form.getInputProps('goalAchieve')}
-                />
-                <TextInput
-                    required
-                    label="Keywords"
-                    placeholder='Input keywords that represent your campaign'
-                    {...form.getInputProps('keywords')}
-                />
-                <Textarea
-                    required
-                    label="Vote Options"
-                    placeholder='Input candidates here. (seperate each entry by a comma; eg:)'
-                    autosize
-                    minRows={2}
-                    maxRows={4}
-                    {...form.getInputProps('voteOptions')}
-                />
+  return (
+    <Flex>
+      <Form onSubmit={form.onSubmit((values) => {
+        handleSubmit(values)
+      })}>
+        <TextInput
+          required
+          label="Campaign Title"
+          placeholder="Your Campaign Title"
 
-                <CButton
-                    type="submit">Submit</CButton>
-            </Form>
-        </Flex>
-    );
+          {...form.getInputProps('campaignTitle')}
+        />
+        <TextInput
+          required
+          label="Campaign Deadline"
+          input type="datetime-local"
+          {...form.getInputProps('campaignDeadline')}
+        />
+        <Textarea
+          required
+          label="Description"
+          placeholder='Describe your campaign'
+          {...form.getInputProps('description')}
+        />
+        <TextInput
+          required
+          label="Goal to Achieve"
+          placeholder='0.00000000 ETH'
+          {...form.getInputProps('goalAchieve')}
+        />
+        <Select
+          required
+          label="Keywords"
+          data={keywords}
+          placeholder='Input keywords that represent your campaign'
+          creatable
+          searchable
+          getCreateLabel={(query) => `+ Create ${query}`}
+          onCreate={(query) => setKeywords((current) => [...current, query])}
+          {...form.getInputProps('keywords')}
+        />
+        <Textarea
+          required
+          label="Vote Options"
+          placeholder='Input candidates here. (seperate each entry by a comma.)'
+          autosize
+          minRows={2}
+          maxRows={4}
+          {...form.getInputProps('voteOptions')}
+        />
+        <CButton
+          type="submit">Submit</CButton>
+      </Form>
+    </Flex>
+  );
 }
 
 const CButton = styled(Button)`
