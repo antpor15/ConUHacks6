@@ -1,6 +1,7 @@
-#navbar {
+.navbar {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     height: 94%;
     width: 300px;
     position: fixed;
@@ -10,7 +11,12 @@
     background-color: #000000;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 2%;
+    padding-bottom: 60px;
+}
+
+.navbar-closed {
+    padding-top: 2%;
 }
 
 #invisible {

@@ -23,15 +23,15 @@ export const Navbar = (props) => {
     }
 
     if (!props.navbarOpen) {
-        return <div>
+        return <div className='navbar-closed'>
             <button className="icons" onClick={() => handleBurgerOpen()}><GiHamburgerMenu size={22}></GiHamburgerMenu></button>
         </div>
     }
-    return <div id="navbar">
+    return <div className="navbar">
         <div id="top-of-nav">
-            <button id="invisible"><AiFillHome size={22}></AiFillHome></button>
-            <button className="icons" onClick={() => handleChange("")} style={props.selectedTab === "" ? { color: "#FFE81F" } : { color: 'white' }}><AiFillHome size={22}></AiFillHome></button>
             <button className="icons" onClick={() => handleBurgerClose()}><GiHamburgerMenu size={22}></GiHamburgerMenu></button>
+            <button className="icons" onClick={() => handleChange("")} style={props.selectedTab === "" ? { color: "#FFE81F" } : { color: 'white' }}><AiFillHome size={22}></AiFillHome></button>
+            <button id="invisible"><AiFillHome size={22}></AiFillHome></button>
         </div>
         <div id="nav-features">
             <button className="nav-button" onClick={() => handleChange("createFundraiser")} style={props.selectedTab === "createFundraiser" ? { color: "#FFE81F" } : { color: 'white' }}>Create Fundraiser</button>
@@ -43,5 +43,5 @@ export const Navbar = (props) => {
                 <AiFillGithub size={28}></AiFillGithub>
             </button>
         </div>
-    </div >;
+    </div >
 };
