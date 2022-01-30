@@ -11,12 +11,12 @@
     background-color: #000000;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 2%;
+    padding-top: 1%;
     padding-bottom: 60px;
 }
 
 .navbar-closed {
-    padding-top: 2%;
+    padding-top: 1%;
 }
 
 #invisible {
