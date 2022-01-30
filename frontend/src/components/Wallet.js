@@ -1,9 +1,17 @@
 import React from 'react';
 import { ReactComponent as WalletLogo } from '../ethereum-wallet.svg';
-import "../css/wallet.css"
+import styled from 'styled-components'
 
 export const Wallet = () => {
-    return <div className="wallet-div">
+    return <WalletDiv className="wallet-div">
         <WalletLogo />
-    </div>;
+    </WalletDiv>;
 };
+
+const WalletDiv = styled.div`
+position:fixed;
+    z-index: 1;
+    bottom:0;
+    right:0;
+    padding-bottom: 1%;
+`
