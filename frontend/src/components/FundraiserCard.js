@@ -10,10 +10,16 @@ export const FundraiserCard = (props) => {
 
     return (
         <div id="card-div">
-            <Card shadow="sm" padding="lg" sx={{
-                backgroundColor: "black",
-                opacity: 0.8
-            }}
+            <Card shadow="sm"
+                className="card-gallery" sx={{
+                    backgroundColor: "black",
+                    opacity: 0.9,
+                    margin: "5px",
+                    border: "2px solid transparent",
+                    '&:hover': {
+                        border: "2px solid yellow",
+                    },
+                }}
             >
                 <Card.Section>
                     <Image src={props.image} height={80} alt={props.image} />
