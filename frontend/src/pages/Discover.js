@@ -89,11 +89,11 @@ const Gallery = styled.div`
 `
 
 const FilterIcon = styled.button`
-background-color:transparent;
+    background-color:transparent;
     border-width:0px;
     color: white;
-    display:flex;
+    position: absolute;
     justify-content: flex-end;
-    
-
+    right: 5px;
+    top: 5px;
 `
