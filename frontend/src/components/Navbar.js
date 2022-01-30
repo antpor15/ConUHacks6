@@ -4,6 +4,7 @@ import { AiFillHome } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi"
 import { AiFillGithub } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { FaEthereum } from "react-icons/fa";
 
 export const Navbar = (props) => {
     const navigate = useNavigate();
@@ -39,9 +40,12 @@ export const Navbar = (props) => {
         </div>
 
         <div id="bottom-of-nav">
-            <button className="icons" id="github-icon">
+            <a href="https://github.com/antpor15/ConUHacks6" className="icons" id="github-icon">
                 <AiFillGithub size={28}></AiFillGithub>
-            </button>
+            </a>
+            <a href="https://ropsten.etherscan.io/address/0xE08175cB86F4b7E1fD0631F97bb0a59580Bd61A8#code" className="icons" id="github-icon">
+                <FaEthereum size={28}></FaEthereum>
+            </a>
         </div>
     </div >
 };
