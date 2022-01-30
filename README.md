@@ -1,4 +1,4 @@
-# ConUHacks6
+# ConUHacks VI
 
 Welcome to our repo! This is a decentralized funding and voting platform, with a Star Wars theme!
 
