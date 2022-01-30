@@ -1,7 +1,7 @@
 import React from 'react';
 import { FundraiserCard } from '../components/FundraiserCard';
-import "../css/discover.css"
 import { MdFilterList } from 'react-icons/md'
+import styled from 'styled-components'
 
 export const Discover = () => {
     const gallery = [
@@ -38,15 +38,39 @@ export const Discover = () => {
 
 
     return (
-        <div>
-            <button className={"filter"}><MdFilterList size={25}></MdFilterList></button>
-            <div className={"flex-center"}>
-                <div id="gallery">
+        <Flex>
+            <Filter><MdFilterList size={25}></MdFilterList></Filter>
+            <Flex>
+                <Gallery>
                     {gallery.map((campaign) =>
-                        <FundraiserCard name={campaign.name} description={campaign.description}
-                            image={campaign.image}></FundraiserCard>)}
-                </div>
-            </div>
-        </div>
+                        <FundraiserCard campaign={campaign}></FundraiserCard>)}
+                </Gallery>
+            </Flex>
+        </Flex>
     )
 };
+
+const Flex = styled.div`
+display: flex;
+    justify-content: center;
+    width: 100vw;
+`
+
+const Gallery = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-top: 6%;
+    padding-left: 2%;
+    padding-right: 2%;
+    row-gap: 25px;
+    max-width: 60%;
+`
+
+const Filter = styled.button`
+background-color:transparent;
+    border-width:0px;
+    color: white;
+`

@@ -1,7 +1,7 @@
 import { Card, Image, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
 import "../css/fundraiserCard.css"
 
-export const FundraiserCard = (props) => {
+export const FundraiserCard = ({campaign}) => {
     const theme = useMantineTheme();
 
     const secondaryColor = theme.colorScheme === 'dark'
@@ -21,17 +21,17 @@ export const FundraiserCard = (props) => {
                 }}
             >
                 <Card.Section>
-                    <Image src={props.image} height={90} alt={props.image} />
+                    <Image src={campaign.image} height={90} alt={campaign.image} />
                 </Card.Section>
                 <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
-                    <Text size="lg" weight={500} style={{ fontFormat: "Nanum Gothic sans-serif", color: "white" }}>{props.name}</Text>
+                    <Text size="lg" weight={500} style={{ fontFormat: "Nanum Gothic sans-serif", color: "white" }}>{campaign.name}</Text>
                     {/* <Badge color="pink" variant="light">
                         On Sale
                     </Badge> */}
                 </Group>
 
-                <Text size="sm" style={{ color: "white", lineHeight: 1.5, fontFormat: "Nanum Gothic sans-serif", color: "white" }}>
-                    {props.description}
+                <Text size="sm" style={{ color: "white", lineHeight: 1.5, fontFormat: "Nanum Gothic sans-serif"}}>
+                    {campaign.description}
                 </Text>
 
                 <Button variant="light" color="blue" fullWidth style={{ marginTop: 14, fontFormat: "Nanum Gothic sans-serif", color: "black", backgroundColor: "#FFE81F" }}>
