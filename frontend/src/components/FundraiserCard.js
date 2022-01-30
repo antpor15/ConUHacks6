@@ -9,11 +9,10 @@ export const FundraiserCard = (props) => {
         : theme.colors.gray[7];
 
     return (
-        <div id="card-div">
+        <div id="card-div" style={{ opacity: 0.8 }}>
             <Card shadow="sm"
                 sx={{
                     backgroundColor: "black",
-                    opacity: 0.9,
                     margin: "5px",
                     border: "2px solid transparent",
                     '&:hover': {
@@ -22,21 +21,20 @@ export const FundraiserCard = (props) => {
                 }}
             >
                 <Card.Section>
-                    <Image src={props.image} height={80} alt={props.image} />
+                    <Image src={props.image} height={90} alt={props.image} />
                 </Card.Section>
-
                 <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
-                    <Text weight={500}>{props.name}</Text>
+                    <Text size="lg" weight={500} style={{ fontFormat: "Nanum Gothic sans-serif", color: "white" }}>{props.name}</Text>
                     {/* <Badge color="pink" variant="light">
                         On Sale
                     </Badge> */}
                 </Group>
 
-                <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
+                <Text size="sm" style={{ color: "white", lineHeight: 1.5, fontFormat: "Nanum Gothic sans-serif", color: "white" }}>
                     {props.description}
                 </Text>
 
-                <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
+                <Button variant="light" color="blue" fullWidth style={{ marginTop: 14, fontFormat: "Nanum Gothic sans-serif", color: "black", backgroundColor: "#FFE81F" }}>
                     Donate
                 </Button>
             </Card>

@@ -1,6 +1,7 @@
 import React from 'react';
-import {FundraiserCard} from '../components/FundraiserCard';
+import { FundraiserCard } from '../components/FundraiserCard';
 import "../css/discover.css"
+import { MdFilterList } from 'react-icons/md'
 
 export const Discover = () => {
     const gallery = [
@@ -37,13 +38,15 @@ export const Discover = () => {
 
 
     return (
-        <div className={"flex-center"}>
-            <div id="gallery">
-                {gallery.map((campaign) =>
-                    <FundraiserCard name={campaign.name} description={campaign.description}
-                                    image={campaign.image}></FundraiserCard>)}
+        <div>
+            <button className={"filter"}><MdFilterList size={25}></MdFilterList></button>
+            <div className={"flex-center"}>
+                <div id="gallery">
+                    {gallery.map((campaign) =>
+                        <FundraiserCard name={campaign.name} description={campaign.description}
+                            image={campaign.image}></FundraiserCard>)}
+                </div>
             </div>
-            ;
         </div>
     )
 };

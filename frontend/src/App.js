@@ -1,6 +1,7 @@
 import { useState, React } from 'react'
 import Router from "./pages";
 import { Navbar } from "./components/Navbar"
+import { Wallet } from "./components/Wallet"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
   return (
     <div>
       <Navbar navbarOpen={navbarOpen} setNavBarOpen={setNavbarOpen} navbarStateChange={navbarStateChange} selectedTab={selectedTab} tabChange={tabChange} />
+      <Wallet />
       <Router />
     </div>
   );
