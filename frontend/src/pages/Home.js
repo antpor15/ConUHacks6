@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components'
+import logo from '../logo.png'
 
 export const Home = () => {
   return <Flex>
-    <Texth1>Star Funds</Texth1>
+    <img style={{ maxWidth: '40%', paddingBottom: '40px'}} src={logo}></img>
     <Container>
       <Text>
         A long time ago, in a metaverse far far away... Decentralized cryptofunding was climbing its way to the top!
