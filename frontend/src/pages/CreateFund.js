@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
-import React from 'react';
-import { TextInput, Checkbox, Button, MultiSelect, Textarea } from '@mantine/core';
+import React, { useState } from 'react';
+import { TextInput, Checkbox, Button, MultiSelect, Textarea, Select } from '@mantine/core';
 import { useForm, useHover } from '@mantine/hooks';
 import '../css/createFund.css'; 
 
@@ -20,13 +20,22 @@ export function CreateFund() {
       },
     });
 
-    const handleSubmit = (values) => {
+    const [keywords, setKeywords] = useState([]);
+
+    const handleSubmit =(values) => {
       console.log(values)
-      alert("Please fill in the required areas")
+      if (values.campaignTitle === '' || values.description === '' || values.goalAchieve === '' || values.keywords.length === [''] || values.voteOptions === '') {
+        alert("Please fill in the required areas")
+        return;
+      }
+      splitString(values.voteOptions)
     }
 
-    //always use handlesubmit and parse vote options to have min 2 max 4.
-  
+    function splitString (voteOptions) {
+      const optionArray = voteOptions.split(",", 4)
+      console.log(optionArray)
+    }
+    
     return (
       <form className='container' onSubmit={form.onSubmit((values) => {handleSubmit(values)})}>
         <TextInput
@@ -37,7 +46,6 @@ export function CreateFund() {
           {...form.getInputProps('campaignTitle')}
         />
         <TextInput
-          required
           label="Campaign Deadline"
           input type="datetime-local"
           {...form.getInputProps('campaignDeadline')}
@@ -54,16 +62,21 @@ export function CreateFund() {
           placeholder='0.00000000 ETH'
           {...form.getInputProps('goalAchieve')}
         />
-        <TextInput
+        <Select
           required
           label="Keywords"
+          data={keywords}
           placeholder='Input keywords that represent your campaign'
+          creatable
+          searchable
+          getCreateLabel={(query) => `+ Create ${query}`}
+          onCreate={(query) => setKeywords((current) => [...current, query])}
           {...form.getInputProps('keywords')}
           />
           <Textarea
           required
           label="Vote Options"
-          placeholder='Input candidates here. (seperate each entry by a comma; eg:)'
+          placeholder='Input candidates here. (seperate each entry by a comma.)'
           autosize
           minRows={2}
           maxRows={4}
