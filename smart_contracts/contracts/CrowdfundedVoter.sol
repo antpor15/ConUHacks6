@@ -1,7 +1,7 @@
-//SPDX-License-Identifier: Unlicensed
-pragma solidity ^0.8.0;
+// SPDX-License-Identifier: Unlicense
+// Created by Nic, Dina, Anthony and Alex for ConUHacks VI
 
-import "hardhat/console.sol";
+pragma solidity ^0.8.0;
 
 contract CrowdfundedVoter {
     // Campaign struct keeps track of votes, voteOptions, title and other metadata
