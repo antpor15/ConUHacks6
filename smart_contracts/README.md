@@ -1,15 +1,21 @@
-# Basic Sample Hardhat Project
+# Smart contracts Hardhat project for ConUHacks VI
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
-
+To start a local network at http://localhost:8545:
 ```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
 npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
+```
+
+To compile contract:
+```bash
+npx hardhat compile
+```
+
+To deploy to the local network:
+```shell
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+To interact with the network:
+```bash
+npx hardhat console --network localhost
 ```
