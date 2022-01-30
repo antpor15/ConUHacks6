@@ -1,5 +1,5 @@
 import React from 'react';
-import { FundraiserCard } from '../components/FundraiserCard';
+import {FundraiserCard} from '../components/FundraiserCard';
 import "../css/discover.css"
 
 export const Discover = () => {
@@ -36,8 +36,14 @@ export const Discover = () => {
         }]
 
 
-    return <div id="gallery">
-        {gallery.map((campaign) =>
-            <FundraiserCard name={campaign.name} description={campaign.description} image={campaign.image}></FundraiserCard>)}
-    </div>;
+    return (
+        <div className={"flex-center"}>
+            <div id="gallery">
+                {gallery.map((campaign) =>
+                    <FundraiserCard name={campaign.name} description={campaign.description}
+                                    image={campaign.image}></FundraiserCard>)}
+            </div>
+            ;
+        </div>
+    )
 };
