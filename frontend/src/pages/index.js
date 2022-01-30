@@ -10,8 +10,8 @@ const Router = (props) => {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/createFundraiser" element={<CreateFund />} />
-            <Route path="/fundraiser" element={<Fundraiser/>} />
-            <Route path="/discover" element={<Discover />} />
+            <Route path="/fundraiser/:id" element={<Fundraiser campaigns={props.campaigns}/>} />
+            <Route path="/discover" element={<Discover campaigns={props.campaigns}/>} />
         </Routes>
     )
 }

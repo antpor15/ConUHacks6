@@ -4,54 +4,27 @@ import { MdFilterList } from 'react-icons/md'
 import styled from 'styled-components'
 import { Filter } from "../components/Filter"
 
-export const Discover = () => {
+export const Discover = (props) => {
     const [showFilter, setShowFilter] = useState(false)
     const [selectedKeywords, setSelectedKeywords] = useState([])
 
     const keywordsChange = (keywords) => {
         setSelectedKeywords(keywords);
     }
-    const gallery = [
-        {
-            "name": "star",
-            "description": "star wars",
-            "image": "https://cdn.onebauer.media/one/media/5ddc/ffc7/0a4e/c494/e8f7/62f2/star-wars-rise-skywalker-kylo-rey.jpg?format=jpg&quality=80&width=1400&ratio=16-9&resize=aspectfill",
-            "keywords": ["Education", "Freedom"]
-        },
-        {
-            "name": "wars",
-            "description": "war",
-            "image": "https://cdn.onebauer.media/one/media/5ddc/ffc7/0a4e/c494/e8f7/62f2/star-wars-rise-skywalker-kylo-rey.jpg?format=jpg&quality=80&width=1400&ratio=16-9&resize=aspectfill",
-            "keywords": ["Freedom"]
-        },
-        {
-            "name": "da vinky",
-            "description": ":)",
-            "image": "https://cdn.onebauer.media/one/media/5ddc/ffc7/0a4e/c494/e8f7/62f2/star-wars-rise-skywalker-kylo-rey.jpg?format=jpg&quality=80&width=1400&ratio=16-9&resize=aspectfill",
-            "keywords": ["LGBTQ", "Freedom"]
-        },
-        {
-            "name": "star2",
-            "description": "star wars",
-            "image": "https://cdn.onebauer.media/one/media/5ddc/ffc7/0a4e/c494/e8f7/62f2/star-wars-rise-skywalker-kylo-rey.jpg?format=jpg&quality=80&width=1400&ratio=16-9&resize=aspectfill",
-            "keywords": ["BLM"]
-        },
-        {
-            "name": "wars2",
-            "description": "war",
-            "image": "https://cdn.onebauer.media/one/media/5ddc/ffc7/0a4e/c494/e8f7/62f2/star-wars-rise-skywalker-kylo-rey.jpg?format=jpg&quality=80&width=1400&ratio=16-9&resize=aspectfill",
-            "keywords": ["Education", "BLM"]
-        },
-        {
-            "name": "da vinky2",
-            "description": ":)",
-            "image": "https://cdn.onebauer.media/one/media/5ddc/ffc7/0a4e/c494/e8f7/62f2/star-wars-rise-skywalker-kylo-rey.jpg?format=jpg&quality=80&width=1400&ratio=16-9&resize=aspectfill",
-            "keywords": ["Education", "Freedom"]
-        }]
+
+    const gallery = props.campaigns.map((c) => {
+        return {
+            "name": c[2],
+            "description": c[3],
+            "image": c[9],
+            "keywords": c[6]
+        }
+    });
 
     const handleFilterClick = () => {
         setShowFilter(!showFilter)
     }
+    
     return (
         <Flex>
             <FilterIcon onClick={() => handleFilterClick()}><MdFilterList size={25}></MdFilterList></FilterIcon>
