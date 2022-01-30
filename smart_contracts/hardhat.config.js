@@ -1,3 +1,4 @@
+require('dotenv').config();
 require("@nomiclabs/hardhat-waffle");
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -25,6 +26,12 @@ module.exports = {
       details: {
         yul: true
       }
+    }
+  },
+  networks: {
+    ropsten: {
+      url: process.env.ALCHEMY_KEY,
+      accounts: [process.env.ROPSTEN_PRIVATE_KEY]
     }
   }
 };
