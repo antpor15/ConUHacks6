@@ -25,7 +25,7 @@ export const Navbar = (props) => {
 
     if (!props.navbarOpen) {
         return <div style={{position: 'absolute'}}>
-            <button className="icons" onClick={() => handleBurgerOpen()}><GiHamburgerMenu size={22}></GiHamburgerMenu></button>
+            <Icons padding={20} onClick={() => handleBurgerOpen()}><GiHamburgerMenu size={22}></GiHamburgerMenu></Icons>
         </div>
     }
     return <Nav>
@@ -64,7 +64,7 @@ const Nav = styled.div`
     background-color: #000000;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 1%;
+    //padding-top: 1%;
     padding-bottom: 60px;
     @media (max-width: 400px) {
         width: 100vw;
@@ -75,7 +75,6 @@ const Nav = styled.div`
 const NavHeader = styled.div`
  display: flex;
     justify-content: space-between;
-    gap: 10%;
 `
 
 const NavFeatures = styled.div`
@@ -92,8 +91,9 @@ display:flex;
 `
 
 const Icons = styled.button`
-color: white;
-    background: black;
+    padding: ${props => props.padding ? props.padding : 20}px;
+    color: white;
+    background: transparent;
     border-width: 0px;
     &:hover {
     color: #FFE81F;
