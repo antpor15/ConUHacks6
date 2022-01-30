@@ -1,0 +1,12 @@
+#card-div {
+    width: 340px;
+    margin: auto;
+    border-width:2px;
+    border-color:tomato;
+}
+
+#card-div:hover {
+    border-width:2px;
+    border-color:#FFE81F;
+    color:#FFE81F;
+}

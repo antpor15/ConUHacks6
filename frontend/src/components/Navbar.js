@@ -21,8 +21,8 @@ export const Navbar = (props) => {
             <button className="icons"><GiHamburgerMenu size={22}></GiHamburgerMenu></button>
         </div>
         <div id="nav-features">
-            <button className="nav-button" onClick={() => handleChange("create-fund")} style={props.selectedTab === "create-fund" ? { color: "#FFE81F" } : { color: 'white' }}>Create Fundraiser</button>
-            <button className="nav-button" onClick={() => handleChange("discovery")} style={props.selectedTab === "discovery" ? { color: "#FFE81F" } : { color: 'white' }}>Discovery</button>
+            <button className="nav-button" onClick={() => handleChange("createFundraiser")} style={props.selectedTab === "createFundraiser" ? { color: "#FFE81F" } : { color: 'white' }}>Create Fundraiser</button>
+            <button className="nav-button" onClick={() => handleChange("discover")} style={props.selectedTab === "discover" ? { color: "#FFE81F" } : { color: 'white' }}>Discover</button>
         </div>
 
         <div id="bottom-of-nav">
