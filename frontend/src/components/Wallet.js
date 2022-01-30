@@ -7,7 +7,7 @@ import { Popover, Text } from '@mantine/core';
 export const Wallet = (props) => {
     const [opened, setOpened] = useState(false);
 
-    if (!props.hasWallet) {
+    if (props.hasWallet) {
         return <WalletDiv className="wallet-div">
             <Popover
                 opened={opened}

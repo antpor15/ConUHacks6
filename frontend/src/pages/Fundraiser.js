@@ -1,33 +1,36 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {useParams} from "react-router";
 import '../css/fundraiser.css'
 import styled from 'styled-components'
 import {Progress} from "@mantine/core";
 
-const Fundraiser = (fundraiser) => {
-    const route = useParams()
+const Fundraiser = (props) => {
+    const route = useParams().id;
+    const [progress, setprogress] = useState(0);
 
-    return (
+    useEffect(() => {
+      if (props.campaigns.length === 0) {
+        return;
+      }
+      let p = props.campaigns[route][5]/props.campaigns[route][4]*100;
+      setprogress(p > 100 ? 100 : p);
+    }, [props.campaigns]);
+
+    return props.campaigns.length && (
         <Flex>
             <Container>
                 <Image>
                     <img style={{padding: '10%'}} height={250}
-                         src={"https://cdn.onebauer.media/one/media/5ddc/ffc7/0a4e/c494/e8f7/62f2/star-wars-rise-skywalker-kylo-rey.jpg?format=jpg&quality=80&width=1400&ratio=16-9&resize=aspectfill"}/>
+                         src={props.campaigns[route][9]}/>
                 </Image>
                 <Content>
                     <Title>Title:</Title>
-                    <Text>Big Title</Text>
+                    <Text>{props.campaigns[route][2]}</Text>
                     <Title>Description: </Title>
-                    <Text>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                        galley of type and scrambled it to make a type specimen book. It has survived not only five
-                        centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It
-                        was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                        passages, and more recently with desktop publishing software like Aldus PageMaker including
-                        versions of Lorem Ipsum</Text>
+                    <Text>{props.campaigns[route][3]}</Text>
                     <Title>Amount raised</Title>
                     <div style={{display: 'flex', justifyContent:'center'}}>
-                        <CProgress value={75} label="75%" size="xl" radius="xl"/>
+                        <CProgress value={progress} label={progress+"%"} size="xl" radius="xl"/>
                     </div>
                 </Content>
                 <Milestones>
