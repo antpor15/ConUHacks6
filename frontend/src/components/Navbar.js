@@ -24,7 +24,7 @@ export const Navbar = (props) => {
     }
 
     if (!props.navbarOpen) {
-        return <div className='navbar-closed'>
+        return <div style={{ position: 'absolute' }}>
             <button className="icons" onClick={() => handleBurgerOpen()}><GiHamburgerMenu size={22}></GiHamburgerMenu></button>
         </div>
     }

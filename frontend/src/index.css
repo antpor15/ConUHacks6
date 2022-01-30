@@ -2,6 +2,7 @@ button {
   font-family: 'Nanum Gothic', sans-serif;
 }
 body {
+  box-sizing: border-box;
   color: white;
   font-family: 'Nanum Gothic', sans-serif;
   background-image: url(background.png);

@@ -16,7 +16,7 @@ function App() {
     setSelectedTab(newTab);
   }
   return (
-    <div style={{ display: 'flex' }}>
+    <div>
       <Navbar navbarOpen={navbarOpen} setNavBarOpen={setNavbarOpen} navbarStateChange={navbarStateChange} selectedTab={selectedTab} tabChange={tabChange} />
       <Wallet />
       <Router />
