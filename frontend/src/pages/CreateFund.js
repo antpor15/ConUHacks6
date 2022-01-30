@@ -1,9 +1,11 @@
 /* eslint-disable no-restricted-globals */
 import React, { useState } from 'react';
-import { Button, Textarea, TextInput, Select, MultiSelect } from '@mantine/core';
+import { Button, Textarea, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 import styled from 'styled-components'
 import '../css/createFund.css';
+import { useNavigate } from "react-router-dom";
+import { convertEthToGWei, createCampaign, getProvider, getSigner, getReadWriteContract} from '../crypto/crypto';
 
 export function CreateFund() {
     const form = useForm({
@@ -19,9 +21,9 @@ export function CreateFund() {
 
     const [keywords, setKeywords] = useState([]);
     const [formData, setFormData] = useState({});
+    const navigate = useNavigate();
 
     const handleSubmit = (values) => {
-        console.log(values)
         if (values.campaignTitle === '' || values.description === '' || values.goalAchieve === '' || values.keywords.length === 0 || values.voteOptions === '') {
             alert("Please fill in the required areas")
             return;
@@ -40,7 +42,15 @@ export function CreateFund() {
 
         setFormData(newFormData);
 
-        console.log(newFormData)
+        console.log(newFormData);
+
+        getProvider().then((prov) => {
+            getSigner(prov).then((s) => {
+                let contRW = getReadWriteContract(s);
+                let d = {voteOptionsAmount: voteOptions.length, title: values.campaignTitle, description: values.description, goalInGWei: convertEthToGWei(values.goalAchieve), currentFundingInGWei: 0, keywords: newFormData.keywords, endDateTime: Math.floor(new Date(values.campaignDeadline).getTime() / 1000), picURL: values.image, creator: "0x0000000000000000000000000000000000000000"};
+                createCampaign(contRW, voteOptions.map((v) => {return {title: v, votes: 0}}), d).then(() => {navigate("/discover");})
+            });
+        });
     }
 
     function splitString(voteOptions, maxAmount) {
@@ -82,17 +92,6 @@ export function CreateFund() {
                     label="Image URL"
                     placeholder='www.image.com'
                     {...form.getInputProps('image')}
-                />
-                <Select
-                    required
-                    label="Keywords"
-                    data={keywords}
-                    placeholder='Input keywords that represent your campaign'
-                    creatable
-                    searchable
-                    getCreateLabel={(query) => `+ Create ${query}`}
-                    onCreate={(query) => { setKeywords((current) => [...current, query]) }}
-                    {...form.getInputProps('keywords')}
                 />
                 <Textarea
                     required

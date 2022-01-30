@@ -4,9 +4,9 @@ import { MultiSelect } from '@mantine/core';
 export const Filter = (props) => {
     const [value, setValue] = useState([]);
     const data = [
-        { value: 'BLM', label: 'BLM' },
-        { value: 'Education', label: 'Education' },
-        { value: 'LGBTQ', label: 'LGBTQ' },
+        { value: 'Darth', label: 'Darth' },
+        { value: 'Force', label: 'Force' },
+        { value: 'DarkSide', label: 'DarkSide' },
         { value: 'Freedom', label: 'Freedom' },
     ]
 

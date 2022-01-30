@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import { contractData } from "./CrowdfundedVoter";
 
 const contractAddress = "0xE08175cB86F4b7E1fD0631F97bb0a59580Bd61A8";
-const weiPrice = 10000000000;
+const weiPrice = 1000000000000;
 const weiLimit = 900000;
 
 export const checkBrowserWallet = async () => {
