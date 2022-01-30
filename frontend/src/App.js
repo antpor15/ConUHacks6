@@ -1,6 +1,7 @@
 import { useState, React } from 'react'
 import Router from "./pages";
 import { Navbar } from "./components/Navbar"
+import {} from "./crypto/crypto.js"
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
   const tabChange = (newTab) => {
     setSelectedTab(newTab);
   }
+
   return (
     <>
       <Navbar navbarOpen={navbarOpen} navbarStateChange={navbarStateChange} selectedTab={selectedTab} tabChange={tabChange} />
