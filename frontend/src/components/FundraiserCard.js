@@ -1,4 +1,4 @@
-import { Card, Image, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
+import { Card, Image, Text, Button, Group, useMantineTheme } from '@mantine/core';
 import "../css/fundraiserCard.css"
 
 export const FundraiserCard = ({ campaign }) => {
@@ -21,9 +21,6 @@ export const FundraiserCard = ({ campaign }) => {
                 </Card.Section>
                 <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
                     <Text size="lg" weight={500} style={{ fontFormat: "Nanum Gothic sans-serif", color: "white" }}>{campaign.name}</Text>
-                    {/* <Badge color="pink" variant="light">
-                        On Sale
-                    </Badge> */}
                 </Group>
 
                 <Text size="sm" style={{ color: "white", lineHeight: 1.5, fontFormat: "Nanum Gothic sans-serif" }}>

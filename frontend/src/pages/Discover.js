@@ -54,10 +54,12 @@ export const Discover = () => {
     }
     return (
         <Flex>
-            <FilterIcon onClick={() => handleFilterClick()}><MdFilterList size={25}></MdFilterList></FilterIcon>
-            {
-                showFilter ? <Filter keywordsChange={keywordsChange} /> : null
-            }
+            <FilterDiv>
+                <FilterIcon onClick={() => handleFilterClick()}><MdFilterList size={25}></MdFilterList></FilterIcon>
+                {
+                    showFilter ? <Filter keywordsChange={keywordsChange} /> : null
+                }
+            </FilterDiv>
 
             <Flex>
                 <Gallery>
@@ -96,4 +98,12 @@ const FilterIcon = styled.button`
     justify-content: flex-end;
     right: 5px;
     top: 5px;
+`
+
+const FilterDiv = styled.div`
+position: absolute;
+    justify-content: flex-end;
+    right: 5px;
+    top: 5px;
+    z-index:1;
 `

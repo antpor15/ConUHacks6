@@ -17,8 +17,15 @@ export const Filter = (props) => {
 
     return <div>
         <MultiSelect
+            sx={{
+                backgroundColor: "black",
+                margin: "5px",
+                border: "2px solid transparent",
+                '&:hover': {
+                    border: "2px solid yellow",
+                },
+            }}
             data={data}
-            // label=""
             placeholder="Select campaign types"
             searchable
             nothingFound="Nothing found"
