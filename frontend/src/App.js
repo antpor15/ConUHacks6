@@ -15,10 +15,10 @@ function App() {
     setSelectedTab(newTab);
   }
   return (
-    <>
-      <Navbar navbarOpen={navbarOpen} navbarStateChange={navbarStateChange} selectedTab={selectedTab} tabChange={tabChange} />
+    <div style={{display: 'flex'}}>
+      <Navbar navbarOpen={navbarOpen} setNavBarOpen={setNavbarOpen} navbarStateChange={navbarStateChange} selectedTab={selectedTab} tabChange={tabChange} />
       <Router />
-    </>
+    </div>
   );
 }
 
