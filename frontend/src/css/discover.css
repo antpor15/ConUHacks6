@@ -4,7 +4,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
-    padding-top: 10%;
+    padding-top: 6%;
     padding-left: 2%;
     padding-right: 2%;
     row-gap: 25px;
@@ -15,4 +15,10 @@
     display: flex;
     justify-content: center;
     width: 100vw;
+}
+
+.filter {
+    background-color:transparent;
+    border-width:0px;
+    color: white;
 }

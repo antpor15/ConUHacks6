@@ -33,7 +33,7 @@ export const Navbar = (props) => {
             <button className="icons" onClick={() => handleChange("")} style={props.selectedTab === "" ? { color: "#FFE81F" } : { color: 'white' }}><AiFillHome size={22}></AiFillHome></button>
             <button className="icons" onClick={() => handleBurgerClose()}><GiHamburgerMenu size={22}></GiHamburgerMenu></button>
         </div>
-        <div id="nav-features">
+        <div id="nav-features" style={{ position: 'absolute' }}>
             <button className="nav-button" onClick={() => handleChange("createFundraiser")} style={props.selectedTab === "createFundraiser" ? { color: "#FFE81F" } : { color: 'white' }}>Create Fundraiser</button>
             <button className="nav-button" onClick={() => handleChange("discover")} style={props.selectedTab === "discover" ? { color: "#FFE81F" } : { color: 'white' }}>Discover</button>
         </div>
