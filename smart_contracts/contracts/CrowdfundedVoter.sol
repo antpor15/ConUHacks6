@@ -49,54 +49,30 @@ contract CrowdfundedVoter {
     mapping(uint => Campaign) public campaigns;
     uint public campaignsCount;
 
-    /// The campaign has already ended.
-    error CampaignAlreadyEnded();
-    /// The campaign has no remaining funds
-    error NoMoreFunds();
-    /// This address has already voted/backed
-    error VotedAlready();
-    /// Campaign not yet ended
-    error CampaignNotEnded();
-    /// Campaign creator can't vote or back
-    error CreatorNoVoteOrBack();
-    /// Not the campaign creator
-    error NotCampaignCreator();
-
     // Constructor when the contract is created on the network
     constructor() {
        campaignsCount = 0;
     }
 
     // voteAndBack allows a caller to vote and back a specific campaign
-    function voteAndBack(uint _cid, uint _voteOption) external payable {
-        // Check that the campaign is not done
-        if (block.timestamp > campaigns[_cid].endDateTime)
-            revert CampaignAlreadyEnded();
-
-        // Check that the user has not yet voted
-        if (campaigns[_cid].voters[msg.sender].voted)
-            revert VotedAlready();
-
-        // Check that the user is not the creator
-        if (campaigns[_cid].creator == msg.sender)
-            revert CreatorNoVoteOrBack();
+    function voteAndBack(uint _cid, uint _voteOption) external payable returns (bool) {
+        require(block.timestamp < campaigns[_cid].endDateTime, "Campaign is done already");
+        require(campaigns[_cid].creator != msg.sender, "User cannot vote, they are the creator");
+        require(!campaigns[_cid].voters[msg.sender].voted, "User has already voted");
 
         campaigns[_cid].voters[msg.sender].voted = true;
         campaigns[_cid].voters[msg.sender].vote = _voteOption;
         campaigns[_cid].voteOptions[_voteOption].votes += 1;
         campaigns[_cid].currentFundingInGWei += msg.value;
+
+        return true;
     }
 
     // claim allows the campaign creator to claim the money when the campaign is done
     function claim(uint _cid) external returns (bool) {
-        if (campaigns[_cid].creator != msg.sender)
-            revert NotCampaignCreator();
-
-        if (campaigns[_cid].endDateTime > block.timestamp)
-            revert CampaignNotEnded();
-
-        if (campaigns[_cid].currentFundingInGWei <= 0)
-            revert NoMoreFunds();
+        require(campaigns[_cid].creator == msg.sender, "You cannot claim without being the creator");
+        require(campaigns[_cid].endDateTime < block.timestamp, "The campaign is not yet done");
+        require(campaigns[_cid].currentFundingInGWei > 0, "No funds remaining");
 
         uint amount = campaigns[_cid].currentFundingInGWei;
         campaigns[_cid].currentFundingInGWei = 0;
@@ -144,7 +120,7 @@ contract CrowdfundedVoter {
     }
 
     // Create a campaign
-    function createCampaign(VoteOption[] calldata _voteOptions, CampaignConfig calldata _campaign) external {
+    function createCampaign(VoteOption[] calldata _voteOptions, CampaignConfig calldata _campaign) external returns (bool){
         campaigns[campaignsCount].voters[msg.sender] = Voter(true, 0);
         campaigns[campaignsCount].voteOptionsAmount = _campaign.voteOptionsAmount;
         campaigns[campaignsCount].title = _campaign.title;
@@ -158,6 +134,8 @@ contract CrowdfundedVoter {
         addArrayTypesToStorage(_campaign.keywords, _voteOptions, _campaign.voteOptionsAmount);
 
         campaignsCount = campaignsCount + 1;
+
+        return true;
     }
 
     // Helper to remove stack too deep errors
