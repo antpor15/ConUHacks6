@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {useParams} from "react-router";
 import '../css/fundraiser.css'
 import styled from 'styled-components'
-import {Progress} from "@mantine/core";
+import {MultiSelect, Progress, Select} from "@mantine/core";
 
 const Fundraiser = (props) => {
     const route = useParams().id;
@@ -37,7 +37,16 @@ const Fundraiser = (props) => {
                     <Title>
                         Milestones
                     </Title>
-
+                    <Text>
+                      Choose a candidate
+                    </Text>
+                    <div
+                     id='voteGallery'> 
+                      <Select
+                      label="Your favorite framework/library"
+                      placeholder="Pick one"
+                      data={fundraiserData}/>
+                    </div>
                 </Milestones>
             </Container>
         </Flex>
