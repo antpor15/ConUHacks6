@@ -11,6 +11,13 @@
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    opacity: 0.8;
+}
+@media screen and (max-width: 600px) {
+    #navbar {
+        width: 100vw;
+        opacity: 0.9;
+    }
 }
 
 #invisible {
