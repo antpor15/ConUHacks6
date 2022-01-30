@@ -2,21 +2,27 @@ import React, {useState, useEffect} from 'react'
 import {useParams} from "react-router";
 import '../css/fundraiser.css'
 import styled from 'styled-components'
-import {MultiSelect, Progress, Select} from "@mantine/core";
+import { ethers } from "ethers";
+import {MultiSelect, Progress, Select, Button} from "@mantine/core";
 
 const Fundraiser = (props) => {
     const route = useParams().id;
     const [progress, setprogress] = useState(0);
+    const [voteOptions, setVoteOptions] = useState([]);
 
     useEffect(() => {
       if (props.campaigns.length === 0) {
         return;
       }
+
       let p = props.campaigns[route][5]/props.campaigns[route][4]*100;
       setprogress(p > 100 ? 100 : p);
+
+      setVoteOptions(props.campaigns[route][0].map((v) => {
+        return v.title;
+      }));
     }, [props.campaigns]);
 
-    let fundraiserData = ["option 1", "option 2"];
 
     return props.campaigns.length && (
         <Flex>
@@ -37,18 +43,21 @@ const Fundraiser = (props) => {
                 </Content>
                 <Milestones>
                     <Title>
-                        Milestones
+                        Voting
                     </Title>
                     <Text>
-                      Choose a candidate
+                      Choose an option:
                     </Text>
                     <div
                      id='voteGallery'> 
                       <Select
-                      label="Your favorite framework/library"
-                      placeholder="Pick one"
-                      data={fundraiserData}/>
+                      label=""
+                      placeholder="Pick one:"
+                      data={voteOptions}/>
                     </div>
+                    {props.campaigns[route][0].map(voteOption => {
+                      return <p>{voteOption.title}: {ethers.BigNumber.from(voteOption.votes._hex).toString()}</p>;
+                    })}
                 </Milestones>
             </Container>
         </Flex>
